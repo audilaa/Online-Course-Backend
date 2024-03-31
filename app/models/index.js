@@ -7,5 +7,6 @@ const db = {}
 db.mongoose = mongoose
 db.url = dbconfig.url
 db.course = require('./course.model.js')(mongoose)
+db.user = require('./user.model.js')(mongoose)
 
 module.exports = db
