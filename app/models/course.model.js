@@ -13,6 +13,16 @@ module.exports = mongoose => {
         return object
     })
 
-    const Course = mongoose.model("course", schema)
+    const Course = mongoose.model("courses", schema)
+
+    // const course = new Course({
+    //     code: "CSE-001",
+    //     course: "Computer Science",
+    //     description: "This is a course on Computer Science",
+    //     price: 1000,
+    //     imageUrl: "https://via.placeholder.com/150"
+    // })
+
+    // course.save(course)
     return Course
 }
