@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 module.exports = mongoose => {
     const schema = mongoose.Schema({
         username: String,
-        email: String,
+        phone: String,
         password: String,
     })
 
@@ -17,7 +17,7 @@ module.exports = mongoose => {
 
     // const user = new User({
     //     username: "admin",
-    //     email: "admin@localhost",
+    //     phone: "084578869212",
     //     password: bcrypt.hashSync("admin", 10)
     // })
 

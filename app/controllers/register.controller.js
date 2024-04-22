@@ -10,7 +10,7 @@ exports.create = (req, res) => {
 
     const user = new User({
         username: req.body.username,
-        email: req.body.email,
+        phone: req.body.phone,
         password: bcrypt.hashSync(req.body.password, 10)
     })
 

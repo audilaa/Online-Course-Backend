@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 
 exports.login = (req, res) => {
     User.findOne({
-        email: req.body.email
+        username: req.body.username
     })
         .then(user => {
             if (!user) {
@@ -18,15 +18,15 @@ exports.login = (req, res) => {
 
             if (!passwordIsValid) {
                 return res.status(401).send({
-                    accessToken: null,
+                    // accessToken: null,
                     message: 'Invalid Password'
                 })
             }
 
             res.status(200).send({
                 id: user._id,
-                email: user.email,
-                accessToken: 'Bearer ' + user._id
+                phone: user.phone,
+                // accessToken: 'Bearer ' + user._id
             })
         })
         .catch(err => {
