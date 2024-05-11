@@ -26,3 +26,13 @@ db.course.insertMany([{
     price: 400,
     imageUrl: "https://images.unsplash.com/photo-1556740730-7f63c1b1b6f7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&"
 }]);
+
+db.packets.insertMany([{
+    "packet_id": 1,
+    "packed_name": "Basic",
+    "packet_items": [
+        "CS101",
+        "CS102",
+        "CS103"
+    ]
+}])

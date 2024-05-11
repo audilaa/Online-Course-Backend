@@ -1,10 +1,14 @@
 const db = require('../models')
 const User = db.user
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 exports.login = (req, res) => {
     User.findOne({
-        username: req.body.username
+        phone: req.body.phone
     })
         .then(user => {
             if (!user) {
@@ -18,18 +22,23 @@ exports.login = (req, res) => {
 
             if (!passwordIsValid) {
                 return res.status(401).send({
-                    // accessToken: null,
-                    message: 'Invalid Password'
+                    message: 'Invalid Password',
+                    accessToken: null
                 })
             }
 
             res.status(200).send({
+                status: true,
+                message: 'Login successfully',
                 id: user._id,
-                phone: user.phone,
-                // accessToken: 'Bearer ' + user._id
+                accessToken: generateAccessToken( { id: user._id } ),
             })
         })
         .catch(err => {
             res.status(500).send({ message: err.message })
         })
+}
+
+function generateAccessToken(userid) {
+    return jwt.sign(userid, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 }
