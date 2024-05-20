@@ -28,11 +28,14 @@ db.course.insertMany([{
 }]);
 
 db.packets.insertMany([{
-    "packet_id": 1,
-    "packed_name": "Basic",
-    "packet_items": [
-        "CS101",
-        "CS102",
-        "CS103"
+    "packet_id": 2,
+    "packed_name": "Fundamental",
+    "packet_price": 150000,
+    "schedule": "Monday - Friday",
+    "schedule_description": "This is courser blahblahblah",
+    "course_list": [
+        "101",
+        "102",
+        "103"
     ]
 }])

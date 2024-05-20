@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 require('./app/routes/course.route')(app)
 require('./app/routes/login.route')(app)
 require('./app/routes/register.route')(app)
+require('./app/routes/packet.route')(app)
 
 const db = require('./app/models')
 db.mongoose

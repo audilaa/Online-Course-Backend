@@ -8,5 +8,6 @@ db.mongoose = mongoose
 db.url = dbconfig.url
 db.course = require('./course.model.js')(mongoose)
 db.user = require('./user.model.js')(mongoose)
+db.packet = require('./packet.model.js')(mongoose)
 
 module.exports = db
