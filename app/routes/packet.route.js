@@ -2,12 +2,12 @@ module.exports = (app) => {
     const packet = require('../controllers/packet.controller.js')
     const router = require('express').Router()
     const authentication = require('../middleware/authenticationToken')
-
-    router.get('/', packet.findAll)
-    router.get('/:id', packet.findPacket)
-    router.post('/', packet.create)
-    router.put('/:id', packet.update)
-    router.delete('/:id', packet.delete)
+    
+    router.post('/', packet.createPacket)
+    router.get('/', packet.findAllPacket)
+    router.get('/:id', packet.findByIdPacket)
+    router.put('/:id', packet.updatePacket)
+    router.delete('/:id', packet.deletePacket)
 
     app.use('/api/packets' , router)
 }

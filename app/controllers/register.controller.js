@@ -2,7 +2,7 @@ const db = require('../models')
 const User = db.user
 const bcrypt = require('bcrypt')
 
-exports.create = (req, res) => {
+exports.createUser = (req, res) => {
     if (!req.body.username) {
         res.status(400).send({ message: 'Name cannot be empty.' })
         return

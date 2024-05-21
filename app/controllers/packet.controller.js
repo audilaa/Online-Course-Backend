@@ -1,7 +1,7 @@
 const db = require('../models')
 const packet = db.packet
 
-exports.findAll = (req, res) => {
+exports.findAllPacket = (req, res) => {
 
     packet.aggregate([
         {
@@ -27,7 +27,7 @@ exports.findAll = (req, res) => {
         });
 }
 
-exports.create = (req, res) => {
+exports.createPacket = (req, res) => {
     if (!req.body.name) {
         res.status(400).send({ message: 'Name cannot be empty.' })
         return
@@ -53,7 +53,7 @@ exports.create = (req, res) => {
         })
 }
 
-exports.findPacket = (req, res) => {
+exports.findByIdPacket = (req, res) => {
     const id = Number(req.params.id)
 
     packet.aggregate([
@@ -85,7 +85,7 @@ exports.findPacket = (req, res) => {
         });
 }
 
-exports.update = (req, res) => {
+exports.updatePacket = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
             message: 'Data to update cannot be empty!'
@@ -109,7 +109,7 @@ exports.update = (req, res) => {
         })
 }
 
-exports.delete = (req, res) => {
+exports.deletePacket = (req, res) => {
     const id = req.params.id
 
     packet.findByIdAndRemove(id)
