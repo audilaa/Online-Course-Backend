@@ -28,7 +28,7 @@ exports.loginUser = (req, res) => {
             }
 
             res.status(200).send({
-                status: true,
+                status: 'success',
                 message: 'Login successfully',
                 id: user._id,
                 accessToken: generateAccessToken( { id: user._id } ),

@@ -19,7 +19,11 @@ exports.createCourse = (req, res) => {
         .save(course)
         .then(data => {
             res.status(201).send({
-                message: 'Course created successfully',
+                status: 'success',
+                message: 'course was created successfully',
+                data: {
+                    courseId: data._id,
+                }
             })
         })
         .catch(err => {

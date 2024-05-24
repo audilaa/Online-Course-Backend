@@ -9,5 +9,5 @@ module.exports = (app) => {
     router.put('/:id', courses.updateCourse)
     router.delete('/:id', courses.deleteCourse)
 
-    app.use('/api/courses', router)
+    app.use('/api/courses', authentication.authenticationToken, router)
 }
