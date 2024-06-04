@@ -3,6 +3,7 @@ module.exports = (app) => {
     const router = require('express').Router()
 
     router.get('/', users.loginUser)
+    router.post('/', users.loginUser)
 
     app.use('/api/login', router)
 }
