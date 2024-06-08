@@ -30,8 +30,10 @@ exports.loginUser = (req, res) => {
             res.status(200).send({
                 status: 'success',
                 message: 'Login successfully',
-                id: user._id,
-                accessToken: generateAccessToken( { id: user._id } ),
+                data : {
+                    userId: user._id,
+                    accessToken: generateAccessToken( { id: user._id }),
+                }
             })
         })
         .catch(err => {

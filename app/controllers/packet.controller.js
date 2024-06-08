@@ -13,12 +13,10 @@ exports.findAllPacket = (req, res) => {
             }
         }
     ])
-        .then(result => {
-            res.status(200).send({
-                status: true,
-                message: 'Data found',
-                data: result
-            })
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: 'Not found packet with id ' + id })
+            else res.send(data)
         })
         .catch(err => {
             res.status(409).send({
@@ -71,18 +69,20 @@ exports.findByIdPacket = (req, res) => {
             }
         }
     ])
-        .then(result => {
-            res.status(200).send({
-                status: true,
-                message: 'Data found',
-                data: result
-            })
+        .then(data => {
+            if (!data) {
+                res.status(404).send({ message: 'Not found packet with id ' + id })
+            } else if (data.length > 0) {
+                res.send(data[0])
+            } else {
+                res.status(404).send({ message: 'Not found packet with id ' + id })
+            }
         })
         .catch(err => {
-            res.status(409).send({
-                message: err.message
-            })
-        });
+            res
+                .status(500)
+                .send({ message: 'Error retrieving packet with id=' + id })
+        })
 }
 
 exports.updatePacket = (req, res) => {
@@ -112,14 +112,14 @@ exports.updatePacket = (req, res) => {
 exports.deletePacket = (req, res) => {
     const id = req.params.id
 
-    packet.findByIdAndRemove(id)
+    packet.findByIdAndDelete(id)
         .then(data => {
             if (!data) {
                 res.status(404).send({
                     message: `Cannot delete packet with id=${id}. Maybe packet was not found!`
                 })
             } else {
-                res.status(200).send({
+                res.send({
                     message: 'packet was deleted successfully!'
                 })
             }
