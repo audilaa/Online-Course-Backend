@@ -1,30 +1,6 @@
 const db = require('../models')
 const packet = db.packet
 
-exports.findAllPacket = (req, res) => {
-
-    packet.aggregate([
-        {
-            $lookup: {
-                from: 'courses',
-                localField: 'course_list',
-                foreignField: 'code',
-                as: 'course_list'
-            }
-        }
-    ])
-        .then(data => {
-            if (!data)
-                res.status(404).send({ message: 'Not found packet with id ' + id })
-            else res.send(data)
-        })
-        .catch(err => {
-            res.status(409).send({
-                message: err.message
-            })
-        });
-}
-
 exports.createPacket = (req, res) => {
     if (!req.body.name) {
         res.status(400).send({ message: 'Name cannot be empty.' })
@@ -49,6 +25,30 @@ exports.createPacket = (req, res) => {
                 message: err.message || 'Some error occurred while creating the packet.'
             })
         })
+}
+
+exports.findAllPacket = (req, res) => {
+
+    packet.aggregate([
+        {
+            $lookup: {
+                from: 'courses',
+                localField: 'course_list',
+                foreignField: 'code',
+                as: 'course_list'
+            }
+        }
+    ])
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: 'Not found packet with id ' + id })
+            else res.send(data)
+        })
+        .catch(err => {
+            res.status(409).send({
+                message: err.message
+            })
+        });
 }
 
 exports.findByIdPacket = (req, res) => {
