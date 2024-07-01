@@ -10,5 +10,5 @@ module.exports = (app) => {
     router.put('/:id', packet.updatePacket)
     router.delete('/:id', packet.deletePacket)
 
-    app.use('/api/packets', authentication.authenticationToken, router)
+    app.use('/api/packets', router)
 }

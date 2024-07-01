@@ -1,7 +1,7 @@
 module.exports = (app) => {
     const courses = require('../controllers/course.controller.js')
     const router = require('express').Router()
-    const authentication = require('../middleware/authenticationToken')
+    // const authentication = require('../middleware/authenticationToken')
     
     router.post('/', courses.createCourse)
     router.get('/', courses.findAllCourse)
@@ -9,5 +9,5 @@ module.exports = (app) => {
     router.put('/:id', courses.updateCourse)
     router.delete('/:id', courses.deleteCourse)
 
-    app.use('/api/courses', authentication.authenticationToken, router)
+    app.use('/api/courses', router)
 }

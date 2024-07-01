@@ -52,7 +52,7 @@ exports.findAllPacket = (req, res) => {
 }
 
 exports.findByIdPacket = (req, res) => {
-    const id = Number(req.params.id)
+    const id = req.params.id
 
     packet.aggregate([
         {
