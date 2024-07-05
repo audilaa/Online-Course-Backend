@@ -11,7 +11,8 @@ exports.createUser = (req, res) => {
     const user = new User({
         username: req.body.username,
         phone: req.body.phone,
-        password: bcrypt.hashSync(req.body.password, 10)
+        password: bcrypt.hashSync(req.body.password, 10),
+        role: "user",
     })
 
     user

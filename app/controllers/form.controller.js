@@ -107,6 +107,34 @@ exports.findByIdForm = (req, res) => {
         })
 }
 
+exports.updateForm = (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: 'Data to update can not be empty!'
+        })
+    }
+
+    const id = req.params.id
+
+    Form.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+        .then(data => {
+            if (!data) {
+                res.status(404).send({
+                    message: `Cannot update Form with id=${id}. Maybe Form was not found!`
+                })
+            } else {
+                res.send({
+                    message: 'Form was updated successfully!'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: 'Error updating Form with id=' + id
+            })
+        })
+}
+
 exports.deleteForm = (req, res) => {
     const id = req.params.id
 

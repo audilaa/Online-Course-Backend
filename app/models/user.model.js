@@ -3,9 +3,10 @@
 module.exports = mongoose => {
     const schema = mongoose.Schema({
         username: String,
-        phone: String,
+        phone: Number,
         password: String,
-        packet: [String],
+        role: String,
+        // packet: [String],
     })
 
     schema.method("toJSON", function() {
@@ -18,9 +19,9 @@ module.exports = mongoose => {
 
     // const user = new User({
     //     username: "admin",
-    //     phone: "084578869212",
+    //     phone: "628934973912",
     //     password: bcrypt.hashSync("admin", 10),
-    //     packet: ["1", "2"],
+    //     role: true,
     // })
 
     // user.save(User)
