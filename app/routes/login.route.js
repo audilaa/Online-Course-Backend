@@ -1,9 +1,8 @@
 module.exports = (app) => {
-    const users = require('../controllers/login.controller')
-    const router = require('express').Router()
+  const users = require("../controllers/login.controller");
+  const router = require("express").Router();
 
-    router.get('/', users.login)
-    router.post('/', users.login)
+  router.post("/", users.loginUser);
 
-    app.use('/api/login', router)
-}
+  app.use("/api/login", router);
+};

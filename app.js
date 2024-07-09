@@ -17,6 +17,7 @@ require('./app/routes/course.route')(app)
 require('./app/routes/login.route')(app)
 require('./app/routes/register.route')(app)
 require('./app/routes/packet.route')(app)
+require('./app/routes/form.route')(app)
 
 const db = require('./app/models')
 db.mongoose
